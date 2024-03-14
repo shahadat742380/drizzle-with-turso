@@ -19,7 +19,7 @@ const Navbar = () => {
             </div>
           ) : (
             <Link href="/sign-in">
-              <button className="py-2 px-3 bg-blue-600 rounded-md text-white">
+              <button className="py-2 px-3 bg-green-600 rounded-md text-white">
                 Login
               </button>
             </Link>
