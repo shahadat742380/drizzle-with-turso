@@ -10,7 +10,7 @@ const Navbar = () => {
     <div className="bg-gray-800 w-full">
       <div className="container mx-auto h-20 p-5 flex justify-between">
         <div>
-          <h1 className="text-white ">Drizzle/Turso</h1>
+          <h1 className="text-white ">Drizzle<span className="text-green-500">/Turso</span></h1>
         </div>
         <div>
           {!!user ? (
