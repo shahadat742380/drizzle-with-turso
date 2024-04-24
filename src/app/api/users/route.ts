@@ -2,6 +2,7 @@ import db from "@/db";
 import { users } from "@/db/schema";
 import { NextResponse } from "next/server";
 
+// ** post single user
 export async function POST(req: Request) {
   console.log("working");
   const body = await req.json();
@@ -17,10 +18,11 @@ export async function POST(req: Request) {
     .get();
   console.log({ newUser });
 
-  // NextResponse.json(JSON.stringify(newUser))r
   return NextResponse.json(newUser, { status: 200 });
 }
 
+
+// ** Get all user
 export async function GET(req: Request) {
   const usersData = await db.query.users.findMany();
   return NextResponse.json(usersData, { status: 200 });

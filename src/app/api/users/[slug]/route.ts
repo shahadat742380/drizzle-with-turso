@@ -1,8 +1,8 @@
 // import db
 import db from "@/db";
+import { users } from "@/db/schema";
 
 // import schema
-import { messages } from "@/db/schema";
 
 // import core packages
 import { eq } from "drizzle-orm";
@@ -14,18 +14,18 @@ interface RouteParams {
 }
 
 
-// Delete single message
+// ** Delete single user
 export const DELETE = async (req: Request, params: { params: RouteParams }) => {
   const slug = params.params.slug;
-  console.log(slug, typeof slug);
+//   console.log(slug, typeof slug);
 
   try {
-    const deleteMessage = await db
-      .delete(messages)
-      .where(eq(messages.id, slug))
+    const deleteUser = await db
+      .delete(users)
+      .where(eq(users.id, slug))
       .returning();
     // console.log(deleteMessage);
-    return NextResponse.json(deleteMessage, { status: 200 });
+    return NextResponse.json(deleteUser, { status: 200 });
   } catch (error: any) {
     // console.log(error.message);
     return NextResponse.json(error.message, { status: 500 });
@@ -33,24 +33,23 @@ export const DELETE = async (req: Request, params: { params: RouteParams }) => {
 };
 
 
-// ** update single message
+// update single user
 export const PUT = async (req: Request, params: { params: RouteParams }) => {
   const body = await req.json();
   const slug = params.params.slug;
 
   try {
-    const updateData = await db
-      .update(messages)
+    const updateUser = await db
+      .update(users)
       .set({
-        name: body.name,
+        first_name: body.first_name,
+        last_name: body.last_name,
         email: body.email,
-        subject: body.subject,
-        message: body.message,
       })
-      .where(eq(messages.id, slug))
+      .where(eq(users.id, slug))
       .returning();
 
-    return NextResponse.json(updateData, { status: 500 });
+    return NextResponse.json(updateUser, { status: 500 });
   } catch (error: any) {
     // console.log(error.message);
     return NextResponse.json(error.message, { status: 500 });
