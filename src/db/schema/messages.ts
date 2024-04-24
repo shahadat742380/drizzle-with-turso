@@ -7,6 +7,7 @@ export const messages = sqliteTable("messages", {
   external_id: text("external_id").notNull().unique().$default(()=>randomUUID()),
   name: text("name").default(""),
   email: text("email").default(""),
+  subject: text("subject").notNull(),
   message: text("message").default(""),
 
   createdAt: text("created_at").default(sql`CURRENT_TIME`),

@@ -6,6 +6,7 @@ interface Messages {
   id: number;
   name: string;
   message: string;
+  subject: string;
   email: string;
 }
 
@@ -14,7 +15,7 @@ const Messages = async () => {
 
   const response = await axios.get("/messages");
   const messages = response.data;
-  //   console.log(chats);
+    // console.log(messages);
 
   return (
     <main className="mb-10">
@@ -29,16 +30,18 @@ const Messages = async () => {
               <th className="py-3 px-5">ID</th>
               <th className="py-3 px-5">Name</th>
               <th className="py-3 px-5">Email</th>
+              <th className="py-3 px-5">Subject</th>
               <th className="py-3 px-5">Message</th>
             </tr>
           </thead>
           <tbody>
             {messages.map((message: Messages) => (
               <tr key={message.id} className="border-b ">
-                <td className="py-3 px-5">{message.id}</td>
+                <td className="py-3 px-5">{message?.id}</td>
                 <td className="py-3 px-5">{message.name}</td>
-                <td className="py-3 px-5">{message.email}</td>
-                <td className="py-3 px-5">{message.message}</td>
+                <td className="py-3 px-5">{message?.email}</td>
+                <td className="py-3 px-5">{message?.subject}</td>
+                <td className="py-3 px-5">{message?.message}</td>
               </tr>
             ))}
           </tbody>

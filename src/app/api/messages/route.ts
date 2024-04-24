@@ -10,11 +10,12 @@ export async function POST(req: Request) {
     .values({
       name: body.name,
       email: body.email,
+      subject: body.subject,
       message: body.message,
     })
     .returning()
     .get();
-    console.log({ newMessages });
+    // console.log({ newMessages });
 
     return NextResponse.json(newMessages, {status: 200})
 }
@@ -23,3 +24,4 @@ export async function GET(req: Request) {
   const messagesData = await db.query.messages.findMany();
   return NextResponse.json(messagesData, { status: 200 });
 }
+

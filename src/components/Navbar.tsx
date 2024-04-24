@@ -1,6 +1,9 @@
 "use client";
+
 // import core package
 import Link from "next/link";
+
+// import third party package
 import { UserButton, useUser } from "@clerk/nextjs";
 
 const Navbar = () => {
