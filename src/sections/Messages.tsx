@@ -1,5 +1,5 @@
 // import hooks
-import useAxios from "@/utils/useAxiose";
+import useAxios from "@/utils/useAxios";
 
 // User Data types
 interface Messages {
@@ -15,12 +15,12 @@ const Messages = async () => {
 
   const response = await axios.get("/messages");
   const messages = response.data;
-    // console.log(messages);
+  // console.log(messages);
 
   return (
     <main className="mb-10">
       <h1 className="text-center text-3xl font-bold text-green-500 my-10">
-        All Messages
+        All Messages {messages.length}
       </h1>
       <hr className="" />
       <div className="max-w-7xl mx-auto px-5 my-5">
@@ -35,9 +35,9 @@ const Messages = async () => {
             </tr>
           </thead>
           <tbody>
-            {messages.map((message: Messages) => (
+            {messages.map((message: Messages, idx: number) => (
               <tr key={message.id} className="border-b ">
-                <td className="py-3 px-5">{message?.id}</td>
+                <td className="py-3 px-5">{idx + 1}</td>
                 <td className="py-3 px-5">{message.name}</td>
                 <td className="py-3 px-5">{message?.email}</td>
                 <td className="py-3 px-5">{message?.subject}</td>

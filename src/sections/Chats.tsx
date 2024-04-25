@@ -1,5 +1,5 @@
 // import hooks
-import useAxios from "@/utils/useAxiose";
+import useAxios from "@/utils/useAxios";
 
 // User Data types
 interface Chat {
@@ -9,7 +9,6 @@ interface Chat {
   title: string;
   description: string;
 }
-
 
 const Chats = async () => {
   const axios = useAxios();
@@ -21,7 +20,7 @@ const Chats = async () => {
   return (
     <main className="mb-10">
       <h1 className="text-center text-3xl font-bold text-green-500 my-10">
-        All Chats
+        All Chats {chats.length}
       </h1>
       <hr className="" />
       <div className="max-w-7xl mx-auto px-5 my-5">
@@ -36,9 +35,9 @@ const Chats = async () => {
             </tr>
           </thead>
           <tbody>
-            {chats.map((chat: Chat) => (
+            {chats.map((chat: Chat, idx: number) => (
               <tr key={chat.id} className="border-b ">
-                <td className="py-3 px-5">{chat.id}</td>
+                <td className="py-3 px-5">{idx + 1}</td>
                 <td className="py-3 px-5">{chat.email}</td>
                 <td className="py-3 px-5">{chat.subject}</td>
                 <td className="py-3 px-5">{chat.title}</td>

@@ -1,5 +1,5 @@
 // import hooks
-import useAxios from "@/utils/useAxiose";
+import useAxios from "@/utils/useAxios";
 
 // User Data types
 interface User {
@@ -19,7 +19,7 @@ const User = async () => {
   return (
     <main>
       <h1 className="text-center text-3xl font-bold text-green-500 my-10">
-        All users
+        All users {users.length}
       </h1>
       <hr className="" />
       <div className="max-w-7xl mx-auto px-5 my-5">
@@ -33,9 +33,9 @@ const User = async () => {
             </tr>
           </thead>
           <tbody>
-            {users.map((user: User) => (
+            {users.map((user: User, idx: number) => (
               <tr key={user.id} className="border-b ">
-                <td className="py-3 px-5">{user.id}</td>
+                <td className="py-3 px-5">{idx + 1}</td>
                 <td className="py-3 px-5">{user.first_name}</td>
                 <td className="py-3 px-5">{user.last_name}</td>
                 <td className="py-3 px-5">{user.email}</td>
